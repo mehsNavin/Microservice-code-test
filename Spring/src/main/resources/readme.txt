@@ -38,7 +38,7 @@ To achieve this, the application will load a list of customers with their email,
 
 Create a transaction for a customer
 
-curl --location --request POST 'http://localhost:8080/v1/belong/phoneNumbers/0469001001' \
+curl --location --request POST 'http://localhost:8080/shopping/create' \
 --data-raw '{
     "transactionTime": "2022-05-25 14:56",
     "customerID": "10001",
@@ -58,8 +58,3 @@ List the number of transactions sold to customer from a location
 
 curl --location --request GET 'http://localhost:8080/shopping/getTransactionCount/Australia'
 
-Jacoco Coverage Report
-
-In this application used Jacoco Plug-In to verify the coverage report, can found after the build under: target/site/jacoco/index.html
-To build and generate report, please running below command
-> mvn clean install
