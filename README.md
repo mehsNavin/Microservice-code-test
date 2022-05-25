@@ -2,10 +2,10 @@
 
 shopping-app-microservice is a sample Microservice which provides the below functionalities.
 
-    It can  create a transaction for the customer.
-    It lists the total cost of transactions per customer.
-    It lists the total cost of transactions per product.
-    It lists the number of transactions sold to customer from Australia.
+It can  create a transaction for the customer.
+It lists the total cost of transactions per customer.
+It lists the total cost of transactions per product.
+It lists the number of transactions sold to customer from Australia.
 
 **How to run the project**
 
