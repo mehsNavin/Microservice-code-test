@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
+import com.shopping.model.CustomerResponse;
 import com.shopping.model.Transaction;
 import com.shopping.service.ShoppingService;
 
@@ -26,8 +27,8 @@ public class ShoppingController {
 	}
 	
 	@GetMapping("/getcustomer/{customerId}")
-	public ResponseEntity<String> getCustomerCost(@PathVariable String customerId) {
-	    return new ResponseEntity<String>(shoppingService.getCustomerCost(customerId),HttpStatus.OK);
+	public ResponseEntity<CustomerResponse> getCustomerCost(@PathVariable String customerId) {
+	    return new ResponseEntity<CustomerResponse>(shoppingService.getCustomerCost(customerId),HttpStatus.OK);
 	}
 	
 	@GetMapping("/getproduct/{productId}")

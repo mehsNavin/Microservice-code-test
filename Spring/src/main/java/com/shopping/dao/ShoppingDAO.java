@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import com.shopping.exception.handler.InactiveProduct;
 import com.shopping.exception.handler.TransactionCostExceeded;
+import com.shopping.model.CustomerMapper;
+import com.shopping.model.CustomerResponse;
 import com.shopping.model.Transaction;
 
 @Repository
@@ -56,15 +58,16 @@ public class ShoppingDAO {
         return !cost.isEmpty()&&cost.get(0)*quantity>5000;
 	}
 
-	public String getCustomerCost(String customerId){
-
-		String sql = "SELECT  SUM(T.QUANTITY*P.COST) AS TOTAL_COST "
-				+ "from TRANSACTIONS T inner join PRODUCT P ON T.PRODUCT_CODE = P.PRODUCT_CODE where T.CUSTOMERID ='"+customerId+"'";
+	public CustomerResponse getCustomerCost(String customerId){
+		CustomerMapper cusMapper = new CustomerMapper();
+		String sql = "SELECT  T.CUSTOMERID as CUSTOMERID, P.PRODUCT_CODE AS PRODUCTCODE, SUM(T.QUANTITY*P.COST) AS TOTAL_COST "
+				+ "from TRANSACTIONS T inner join PRODUCT P ON T.PRODUCT_CODE = P.PRODUCT_CODE where "
+				+ "T.CUSTOMERID ='"+customerId+"' GROUP BY P.PRODUCT_CODE";
 		System.out.println(sql);
-		List<String> cost = jdbcTemplate.query(sql,(rs, rowNum) ->rs.getString("TOTAL_COST"));
+		List<CustomerResponse> cost = jdbcTemplate.query(sql,cusMapper);
 		System.out.println(cost);
 		cost.removeAll(Collections.singleton(null));
-		return !cost.isEmpty()?cost.get(0):"Customer Not Found";
+		return !cost.isEmpty()?cost.get(0):new CustomerResponse();
 	}
 
 	public String getProductCost(String productId){

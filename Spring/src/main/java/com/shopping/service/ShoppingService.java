@@ -4,6 +4,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.shopping.dao.ShoppingDAO;
+import com.shopping.model.CustomerResponse;
 import com.shopping.model.Transaction;
 
 @Service
@@ -16,7 +17,7 @@ public class ShoppingService {
 		return shoppingDAO.addTransaction(transaction);
 	}
 
-	public String getCustomerCost(String customerId){
+	public CustomerResponse getCustomerCost(String customerId){
 		return shoppingDAO.getCustomerCost(customerId);
 	}
 
