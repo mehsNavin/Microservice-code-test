@@ -1,4 +1,4 @@
-#About the project
+**About the project**
 
 shopping-app-microservice is a sample Microservice which provides the below functionalities.
 
