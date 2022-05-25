@@ -11,7 +11,7 @@
 	<groupId>shopping</groupId>
 	<artifactId>shopping-app-microservice</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
-	<name>Spring</name>
+	<name>shopping-app</name>
 	<description>Microservice Code Test</description>
 	<properties>
 		<java.version>1.8</java.version>
