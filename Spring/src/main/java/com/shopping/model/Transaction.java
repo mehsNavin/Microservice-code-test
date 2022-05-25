@@ -2,14 +2,15 @@ package com.shopping.model;
 
 import java.util.Date;
 
-import org.springframework.format.annotation.DateTimeFormat;
+import javax.validation.constraints.FutureOrPresent;
 
 import com.fasterxml.jackson.annotation.JsonFormat;
 
 public class Transaction {
 
 	@JsonFormat(pattern = "yyyy-MM-dd HH:mm")
-	private Date date;
+	@FutureOrPresent(message= "Transaction Date cannot be in Past")
+	private Date transactionTime;
 	
 	private String customerID;
 	
@@ -17,18 +18,7 @@ public class Transaction {
 	
 	private String productCode;
 	
-	private String firstName;
 	
-	private String lastName;
-	
-	private String email;
-	
-	private String location;
-	
-	private int cost;
-	
-	private String productStatus;
-
 	public String getCustomerID() {
 		return customerID;
 	}
@@ -53,67 +43,13 @@ public class Transaction {
 		this.productCode = productCode;
 	}
 
-	public String getFirstName() {
-		return firstName;
-	}
-
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
-
-	public String getLastName() {
-		return lastName;
-	}
-
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
-
-	public String getEmail() {
-		return email;
-	}
-
-	public void setEmail(String email) {
-		this.email = email;
-	}
-
-	public String getLocation() {
-		return location;
-	}
-
-	public void setLocation(String location) {
-		this.location = location;
-	}
-
-	public int getCost() {
-		return cost;
-	}
-
-	public void setCost(int cost) {
-		this.cost = cost;
-	}
-
-	public String getProductStatus() {
-		return productStatus;
-	}
-
-	public void setProductStatus(String productStatus) {
-		this.productStatus = productStatus;
-	}
-
+	
 	public Date getDate() {
-		return date;
+		return transactionTime;
 	}
 
 	public void setDate(Date date) {
-		this.date = date;
+		this.transactionTime = date;
 	}
 
-	@Override
-	public String toString() {
-		return "Transaction [date=" + date + ", customerID=" + customerID + ", quantity=" + quantity + ", productCode="
-				+ productCode + "]";
-	}
-	
-	
 }

@@ -1,17 +1,23 @@
-package com.shopping.model;
+package com.shopping.database.model;
 
 import java.util.Date;
 
 import javax.persistence.*;
 
-@Entity
-@Table(name = "TrackTransactions")
-public class TrackTransactions {
+import org.springframework.format.annotation.DateTimeFormat;
 
+@Entity
+@Table(name = "Transactions")
+public class Transactions {
+
+	@Id
+	@GeneratedValue(strategy=GenerationType.IDENTITY)
+	private long rowId;
+	
 	@Column(name = "TransactionTime")
+	@DateTimeFormat(pattern="yyyy-MM-dd HH:mm")
 	private Date transactionTime;
 	
-	@Id @GeneratedValue
 	@Column(name = "CustomerID")
 	private String customerID;
 	
@@ -51,5 +57,13 @@ public class TrackTransactions {
 
 	public void setProductCode(String productCode) {
 		this.productCode = productCode;
+	}
+
+	public long getRowId() {
+		return rowId;
+	}
+
+	public void setRowId(long rowId) {
+		this.rowId = rowId;
 	}
 }
